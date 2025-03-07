@@ -1,0 +1,16 @@
+message: "This is a global configuration"
+
+# Common properties shared across all services
+logging:
+  level:
+    org.springframework: INFO
+    com.lpri: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
