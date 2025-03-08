@@ -37,6 +37,16 @@ eureka:
   instance:
     prefer-ip-address: true
 
+management:
+  health:
+    redis:
+      enabled: false
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
+
 #management:
 #  endpoints:
 #    web:
