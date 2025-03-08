@@ -9,8 +9,8 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: user-service
-          uri: lb://user-service
+        - id: user-management-service
+          uri: lb://user-management-service
           predicates:
             - Path=/api/users/**
           filters:
@@ -22,8 +22,8 @@ spring:
       default-filters:
         - name: RequestRateLimiter
           args:
-            redis-rate-limiter.replenishRate: 10
-            redis-rate-limiter.burstCapacity: 20
+#            redis-rate-limiter.replenishRate: 10
+#            redis-rate-limiter.burstCapacity: 20
 
 eureka:
   client:
