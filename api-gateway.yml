@@ -37,6 +37,12 @@ eureka:
   instance:
     prefer-ip-address: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/springboot-lpx-microservice-realm
+
 management:
   endpoint:
     gateway:
