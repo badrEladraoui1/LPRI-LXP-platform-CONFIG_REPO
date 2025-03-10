@@ -2,6 +2,15 @@ server:
   port: 9090
 
 spring:
+  redis:
+    host: localhost
+    port: 6379
+    default-filters:
+      - name: RequestRateLimiter
+        args:
+          redis-rate-limiter.replenishRate: 10
+          redis-rate-limiter.burstCapacity: 20
+          key-resolver: "#{@ipKeyResolver}"
   cloud:
     gateway:
       discovery:
@@ -25,14 +34,6 @@ spring:
         jwt:
           issuer-uri: http://localhost:8080/realms/springboot-lpx-microservice-realm
           
-  #  redis:
-  #    host: localhost
-  #    port: 6379
-#      default-filters:
-#        - name: RequestRateLimiter
-#          args:
-#            redis-rate-limiter.replenishRate: 10
-#            redis-rate-limiter.burstCapacity: 20
 
 eureka:
   client:
@@ -42,7 +43,6 @@ eureka:
     fetch-registry: true
   instance:
     prefer-ip-address: true
-
 
 
 management:
@@ -58,14 +58,6 @@ management:
       - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
       - org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
 
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-#  endpoint:
-#    health:
-#      show-details: always
 
 resilience4j:
   circuitbreaker:
@@ -79,22 +71,3 @@ resilience4j:
         waitDurationInOpenState: 5s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
-
-
-#server:
-#  port: 8080
-#
-#spring:
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-#          lowerCaseServiceId: true
-#      routes:
-#        - id: user-management-service
-#          uri: lb://user-management-service
-#          predicates:
-#            - Path=/api/users/**
-#          filters:
-#            - StripPrefix=1
