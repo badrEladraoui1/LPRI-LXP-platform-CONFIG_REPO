@@ -32,8 +32,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-#          issuer-uri: http://localhost:8180/realms/springboot-lpx-microservice-realm
-           issuer-uri: : http://localhost:8080/realms/demo-gateway-lxp
+          issuer-uri: : http://localhost:8080/realms/demo-gateway-lxp
+#         issuer-uri: http://localhost:8180/realms/springboot-lpx-microservice-realm
+
 
 eureka:
   client:
