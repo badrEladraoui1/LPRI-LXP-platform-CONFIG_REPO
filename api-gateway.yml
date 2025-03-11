@@ -28,12 +28,27 @@ spring:
               args:
                 name: userServiceCircuitBreaker
                 fallbackUri: forward:/fallback/user-management-service
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
 #         issuer-uri: http://localhost:8180/realms/springboot-lpx-microservice-realm
+    security:
+      oauth2:
+        client:
+          provider:
+            keycloak:
+              issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+              user-name-attribute: preferred_username
+          registration:
+            keycloak:
+              client-id: gateway-api-lxp-test
+              client-secret: bexkpa6A8VQUpnIf3GLX0ihrqZ72WqFT # Get this from Keycloak
+              scope: openid
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
 
 
 eureka:
@@ -72,6 +87,12 @@ resilience4j:
         waitDurationInOpenState: 5s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.security: DEBUG
+    # Set to INFO in production
+
 
 #server:
 #  port: 9090
