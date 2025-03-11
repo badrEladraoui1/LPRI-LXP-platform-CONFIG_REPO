@@ -12,6 +12,7 @@ spring:
           enabled: true
           lower-case-service-id: true
       default-filters:
+        - TokenRelay
         - name: RequestRateLimiter
           args:
             redis-rate-limiter.replenishRate: 10
