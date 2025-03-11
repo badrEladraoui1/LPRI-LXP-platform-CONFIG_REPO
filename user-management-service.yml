@@ -38,6 +38,14 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    ma.emsi.lpri: DEBUG  # Your package name
+    # Set to INFO in production
+
 #token:
 #  secret: ${JWT_SECRET:your-256-bit-secret-key-here-make-it-long-enough}
 #  expiration: 86400000 # 24 hours in milliseconds
