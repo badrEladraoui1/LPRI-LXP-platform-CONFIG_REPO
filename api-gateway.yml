@@ -29,12 +29,7 @@ spring:
               args:
                 name: userServiceCircuitBreaker
                 fallbackUri: forward:/fallback/user-management-service
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
-##         issuer-uri: http://localhost:8180/realms/springboot-lpx-microservice-realm
+
   security:
     oauth2:
       client:
@@ -65,16 +60,7 @@ management:
   endpoint:
     gateway:
       enabled: true
-  # Remove the Redis health check disabling
-  # health:
-  #   redis:
-  #     enabled: false
 
-  # Remove the Redis auto-configuration exclusion
-  # autoconfigure:
-  #   exclude:
-  #     - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
-  #     - org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
 
 resilience4j:
   circuitbreaker:
@@ -97,78 +83,3 @@ logging:
     # Add for specific converters
     org.springframework.security.oauth2.server.resource.authentication: TRACE
     # Set to INFO in production
-
-
-#server:
-#  port: 9090
-#
-#spring:
-#  redis:
-#    host: localhost
-#    port: 6379
-#    default-filters:
-#      - name: RequestRateLimiter
-#        args:
-#          redis-rate-limiter.replenishRate: 10
-#          redis-rate-limiter.burstCapacity: 20
-#          key-resolver: "#{@ipKeyResolver}"
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-#          lower-case-service-id: true
-#      routes:
-#        - id: user-management-service
-#          uri: lb://user-management-service
-#          predicates:
-#            - Path=/api/users/**
-#          filters:
-#            - StripPrefix=2
-#            - name: CircuitBreaker
-#              args:
-#                name: userServiceCircuitBreaker
-#                fallbackUri: forward:/fallback/user-management-service
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: http://localhost:8080/realms/springboot-lpx-microservice-realm
-#
-#
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
-#    register-with-eureka: true
-#    fetch-registry: true
-#  instance:
-#    prefer-ip-address: true
-#
-#
-#management:
-#  endpoint:
-#    gateway:
-#      enabled: true
-#  health:
-#    redis:
-#      enabled: false
-#
-#  autoconfigure:
-#    exclude:
-#      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
-#      - org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
-#
-#
-#resilience4j:
-#  circuitbreaker:
-#    instances:
-#      userServiceCircuitBreaker:
-#        registerHealthIndicator: true
-#        slidingWindowSize: 10
-#        minimumNumberOfCalls: 5
-#        permittedNumberOfCallsInHalfOpenState: 3
-#        automaticTransitionFromOpenToHalfOpenEnabled: true
-#        waitDurationInOpenState: 5s
-#        failureRateThreshold: 50
-#        eventConsumerBufferSize: 10

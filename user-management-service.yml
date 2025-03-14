@@ -2,10 +2,6 @@ server:
   port: 8081
 
 spring:
-#  security:
-#      user:
-#        name: user
-#        password: user
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:testlxpuserdb?createDatabaseIfNotExist=true}
     username: ${DB_USERNAME:postgres}
@@ -43,20 +39,5 @@ logging:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.security: DEBUG
     org.springframework.security.oauth2: DEBUG
-    ma.emsi.lpri: DEBUG  # Your package name
-    # Add for specific converters
+    ma.emsi.lpri: DEBUG
     org.springframework.security.oauth2.server.resource.authentication: TRACE
-    # Set to INFO in production
-
-#token:
-#  secret: ${JWT_SECRET:your-256-bit-secret-key-here-make-it-long-enough}
-#  expiration: 86400000 # 24 hours in milliseconds
-
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-#  endpoint:
-#    health:
-#      show-details: always
