@@ -21,8 +21,10 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
-          jwk-set-uri: http://localhost:8080/realms/demo-gateway-lxp/protocol/openid-connect/certs
+#          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+          issuer-uri: http://localhost:8080/realms/lxp-platform-realm
+#          jwk-set-uri: http://localhost:8080/realms/demo-gateway-lxp/protocol/openid-connect/certs  
+          jwk-set-uri: http://localhost:8080/realms/lxp-platform-realm/protocol/openid-connect/certs
 
 eureka:
   client:

@@ -35,16 +35,22 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+#            issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+            issuer-uri: http://localhost:8080/realms/lxp-platform-realm
+
             user-name-attribute: preferred_username
         registration:
           keycloak:
-            client-id: gateway-api-lxp-test
-            client-secret: bexkpa6A8VQUpnIf3GLX0ihrqZ72WqFT
+#            client-id: gateway-api-lxp-test
+            client-id: spring-backend-client
+#            client-secret: bexkpa6A8VQUpnIf3GLX0ihrqZ72WqFT 
+            client-secret: Wx0tc8rCwwSFTuYiIlAqMEq1flv03i2s
             scope: openid
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+#          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+          issuer-uri: http://localhost:8080/realms/lxp-platform-realm
+
 
 
 eureka:
