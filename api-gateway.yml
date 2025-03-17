@@ -44,7 +44,7 @@ spring:
 #            client-id: gateway-api-lxp-test
             client-id: spring-backend-client
 #            client-secret: bexkpa6A8VQUpnIf3GLX0ihrqZ72WqFT 
-            client-secret: Wx0tc8rCwwSFTuYiIlAqMEq1flv03i2s
+#            client-secret: Wx0tc8rCwwSFTuYiIlAqMEq1flv03i2s // current one trying .env.local solution
             scope: openid
       resourceserver:
         jwt:
