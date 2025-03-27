@@ -36,6 +36,13 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+keycloak:
+  auth-server-url: http://localhost:8080
+  realm: lxp-platform-realm
+  resource: spring-backend-client
+  credentials:
+    secret: JZVXpZzO2sYGep3JZHeqLRfN4Vl8j9Yl
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
