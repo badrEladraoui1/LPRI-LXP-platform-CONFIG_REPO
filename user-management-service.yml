@@ -42,6 +42,8 @@ keycloak:
   resource: spring-backend-client
   credentials:
     secret: ${KEYCLOAK_CLIENT_SECRET}
+  admin-username: useradmin
+  admin-password: admin
 
 logging:
   level:
