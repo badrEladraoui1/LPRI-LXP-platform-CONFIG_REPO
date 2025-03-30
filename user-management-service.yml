@@ -45,6 +45,9 @@ keycloak:
   admin-username: useradmin
   admin-password: admin
 
+application:
+  frontend-url: http://localhost:3000
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
