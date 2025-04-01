@@ -42,8 +42,10 @@ keycloak:
   resource: spring-backend-client
   credentials:
     secret: ${KEYCLOAK_CLIENT_SECRET}
-  admin-username: useradmin
-  admin-password: admin
+#  admin-username: useradmin
+#  admin-password: admin
+  admin-username: ${KEYCLOAK_ADMIN_USERNAME}
+  admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
 
 application:
   frontend-url: http://localhost:3000
