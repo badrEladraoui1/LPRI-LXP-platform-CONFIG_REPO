@@ -29,6 +29,16 @@ spring:
               args:
                 name: userServiceCircuitBreaker
                 fallbackUri: forward:/fallback/user-management-service
+        - id: onboarding-service
+          uri: lb://onboarding-service
+          predicates:
+            - Path=/api/onboarding/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: onboardingServiceCircuitBreaker
+                fallbackUri: forward:/fallback/onboarding-service
 
   security:
     oauth2:
