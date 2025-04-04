@@ -9,7 +9,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
@@ -42,6 +42,7 @@ keycloak:
   resource: spring-backend-client
   credentials:
     secret: ${KEYCLOAK_CLIENT_SECRET}
+  issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
 #  admin-username: useradmin
 #  admin-password: admin
   admin-username: ${KEYCLOAK_ADMIN_USERNAME}
