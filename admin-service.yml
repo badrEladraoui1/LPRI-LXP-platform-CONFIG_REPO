@@ -43,6 +43,9 @@ keycloak:
   credentials:
     secret: ${KEYCLOAK_CLIENT_SECRET}
   issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
+  webhook:
+    admin:
+      secret: ${KEYCLOAK_WEBHOOK_ADMIN_SECRET}
   #  admin-username: useradmin
   #  admin-password: admin
   admin-username: ${KEYCLOAK_ADMIN_USERNAME}
