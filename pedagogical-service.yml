@@ -1,0 +1,63 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:testlxppedagogicaldb?createDatabaseIfNotExist=true}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Security configuration
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          #          issuer-uri: http://localhost:8080/realms/demo-gateway-lxp
+          issuer-uri: http://localhost:8080/realms/lxp-platform-realm
+          #          jwk-set-uri: http://localhost:8080/realms/demo-gateway-lxp/protocol/openid-connect/certs
+          jwk-set-uri: http://localhost:8080/realms/lxp-platform-realm/protocol/openid-connect/certs
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+keycloak:
+  auth-server-url: http://localhost:8080
+  realm: lxp-platform-realm
+  resource: spring-backend-client
+  credentials:
+    secret: ${KEYCLOAK_CLIENT_SECRET}
+  issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
+#  webhook:
+#    users:
+#      secret: ${KEYCLOAK_WEBHOOK_USERS_SECRET}
+  #  admin-username: useradmin
+  #  admin-password: admin
+  admin-username: ${KEYCLOAK_ADMIN_USERNAME}
+  admin-password: ${KEYCLOAK_ADMIN_PASSWORD}
+
+application:
+  frontend-url: http://localhost:3000
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    ma.emsi.lpri: DEBUG
+    org.springframework.security.oauth2.server.resource.authentication: TRACE
