@@ -2,18 +2,18 @@ server:
   port: 7070
 
 spring:
-  datasource:
-    url: jdbc:h2:mem:resourcedb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
 #  datasource:
-#    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:testlxpressourceprocessingdb?createDatabaseIfNotExist=true} # to be back later
-#    username: ${DB_USERNAME:postgres} # to be back later
-#    password: ${DB_PASSWORD:password} # to be back later
-#    driver-class-name: org.postgresql.Driver # to be back later
+#    url: jdbc:h2:mem:resourcedb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password: password
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:testlxpressourceprocessingdb?createDatabaseIfNotExist=true} # to be back later
+    username: ${DB_USERNAME:postgres} # to be back later
+    password: ${DB_PASSWORD:password} # to be back later
+    driver-class-name: org.postgresql.Driver # to be back later
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect # to be deleted later
+#    database-platform: org.hibernate.dialect.H2Dialect # to be deleted later
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -24,7 +24,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-#        dialect: org.hibernate.dialect.PostgreSQLDialect # to be back later
+        dialect: org.hibernate.dialect.PostgreSQLDialect # to be back later
 
   # Security configuration
   security:
