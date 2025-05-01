@@ -26,6 +26,12 @@ spring:
           #          jwk-set-uri: http://localhost:8080/realms/demo-gateway-lxp/protocol/openid-connect/certs
           jwk-set-uri: http://localhost:8080/realms/lxp-platform-realm/protocol/openid-connect/certs
 
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
 eureka:
   client:
     serviceUrl:
@@ -36,6 +42,11 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+
+# Resource processing service settings
+resource-processing:
+  url: ${RESOURCE_PROCESSING_URL:http://localhost:7070}
+
 keycloak:
   auth-server-url: http://localhost:8080
   realm: lxp-platform-realm
@@ -43,9 +54,6 @@ keycloak:
   credentials:
     secret: ${KEYCLOAK_CLIENT_SECRET}
   issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
-  webhook:
-    users:
-      secret: ${KEYCLOAK_WEBHOOK_USERS_SECRET}
   #  admin-username: useradmin
   #  admin-password: admin
   admin-username: ${KEYCLOAK_ADMIN_USERNAME}
