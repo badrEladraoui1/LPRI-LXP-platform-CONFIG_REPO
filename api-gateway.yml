@@ -52,13 +52,33 @@ spring:
         - id: resource-processing-service
           uri: lb://resource-processing-service
           predicates:
+            - Path=/api/resource-processing/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: resourceProcessingServiceCircuitBreaker
+                fallbackUri: forward:/fallback/resource-processing-service
+        - id: pedagogical-service
+          uri: lb://pedagogical-service
+          predicates:
+            - Path=/api/pedagogical/**
+          filters:
+            - StripPrefix=2
+            - name: CircuitBreaker
+              args:
+                name: pedagogicalServiceCircuitBreaker
+                fallbackUri: forward:/fallback/pedagogical-service
+        - id: resource-service
+          uri: lb://resource-service
+          predicates:
             - Path=/api/resources/**
           filters:
             - StripPrefix=2
             - name: CircuitBreaker
               args:
-                name: adminServiceCircuitBreaker
-                fallbackUri: forward:/fallback/resource-processing-service
+                name: resourceServiceCircuitBreaker
+                fallbackUri: forward:/fallback/resource-service
 
   security:
     oauth2:
