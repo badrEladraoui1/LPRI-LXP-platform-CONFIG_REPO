@@ -42,7 +42,8 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+#      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+      defaultZone: http://adminDisc:adminDisc@${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
     register-with-eureka: true
     fetch-registry: true
   instance:
