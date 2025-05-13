@@ -36,6 +36,9 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+user-management:
+  url: ${USER_MANAGEMENT_URL:http://localhost:8081}
+
 keycloak:
   auth-server-url: http://localhost:8080
   realm: lxp-platform-realm
